@@ -1,0 +1,10 @@
+@import '../../../base';
+.infinite-scroll{
+    display: flex;
+    flex-wrap: wrap;
+}
+@media (max-width: $breakpoint-small) {
+    .infinite-scroll{
+        display: block;
+    }
+  }
