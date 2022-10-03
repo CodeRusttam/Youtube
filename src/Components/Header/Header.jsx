@@ -4,13 +4,14 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdNotifications, MdApps } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux'
 const Header = ({handleToggleSidebar}) => {
   const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault()
     navigate(`/search/${input}`)
-    // console.log(e)
   }
+  const user = useSelector(state => state.auth?.user)
   const [input, setInput] = useState('')
   return (
     <div className="header">
@@ -30,8 +31,8 @@ const Header = ({handleToggleSidebar}) => {
         <MdNotifications size={28} />
         <MdApps size={28} />
         <img
-          src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector.png"
-          alt=""
+          src={user?.photoURL}
+          alt="avatar"
         />
       </div>
     </div>

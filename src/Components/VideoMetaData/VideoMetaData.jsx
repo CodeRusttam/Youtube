@@ -9,6 +9,7 @@ import {
    checkSubscriptionStatus,
    getChannelDetails,
 } from '../../redux/actions/channel.action'
+import HelmetCustom from '../Helmet/HelmetCustom'
 const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
    const { channelId, channelTitle, description, title, publishedAt } = snippet
    const { viewCount, likeCount, dislikeCount } = statistics
@@ -26,6 +27,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
    }, [dispatch, channelId])
    return (
       <div className='py-2 videoMetaData'>
+         <HelmetCustom title={title} description={description} />
          <div className='videoMetaData__top'>
             <h5>{title}</h5>
             <div className='py-1 d-flex justify-content-between align-items-center'>
@@ -34,10 +36,10 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
                   {moment(publishedAt).fromNow()}
                </span>
                <div>
-                  <span className='mr-3'>
+                  <span className='me-3'>
                      <MdThumbUp size={26} /> {numeral(likeCount).format('0.a')}
                   </span>
-                  <span className='mr-3'>
+                  <span className='me-3'>
                      <MdThumbDown size={26} />{' '}
                      {numeral(dislikeCount).format('0.a')}
                   </span>
@@ -49,7 +51,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
                <img
                   src={channelSnippet?.thumbnails?.default?.url}
                   alt=''
-                  className='mr-3 rounded-circle'
+                  className='me-3 rounded-circle'
                />
                <div className='d-flex flex-column'>
                   <span>{channelTitle}</span>

@@ -6,6 +6,7 @@ import Comments from "../../Comments/Comments";
 import VideoHorizontal from "../../VideoHorizontal/VideoHorizontal";
 import VideoMetaData from "../../VideoMetaData/VideoMetaData";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import {Helmet} from 'react-helmet'
 import "./watchScreen.scss";
 import {
   getRelatedVideos,
@@ -24,6 +25,9 @@ const WatchScreen = () => {
   const { video, loading } = useSelector((state) => state.selectedVideo);
   return (
     <Row>
+      <Helmet>
+         <title>{video?.snippet?.title}</title>
+      </Helmet>
       <Col lg={8}>
         <div className="watchScreen__player">
           <iframe

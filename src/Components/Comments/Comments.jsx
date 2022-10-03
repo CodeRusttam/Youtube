@@ -13,6 +13,7 @@ const Comments = ({ videoId, totalComments }) => {
       dispatch(getCommentsOfVideoById(videoId))
    }, [videoId, dispatch])
    const [text, setText] = useState('')
+   const {photoURL} = useSelector(state => state.auth?.user)
    const comments = useSelector(state => state.commentList.comments)
    const _comments = comments?.map(
       comment => comment.snippet.topLevelComment.snippet
@@ -27,7 +28,7 @@ const Comments = ({ videoId, totalComments }) => {
       <div className='comments'>
          <p>{totalComments} Comments</p>
          <div className='my-2 comments__form d-flex w-100'>
-            <img src='https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector.png' alt='avatar' className='me-3 rounded-circle' />
+            <img src={photoURL} alt='avatar' className='me-3 rounded-circle' />
             <form className='d-flex flex-grow-1'>
                <input
                   type='text'
