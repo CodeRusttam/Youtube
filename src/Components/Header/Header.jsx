@@ -9,6 +9,7 @@ const Header = ({handleToggleSidebar}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     navigate(`/search/${input}`)
+    console.log(e)
   }
   const [input, setInput] = useState('')
   return (
